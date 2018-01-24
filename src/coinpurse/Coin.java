@@ -64,9 +64,6 @@ public class Coin implements Comparable<Coin>{
 		if(this.getValue()-coin.getValue()>0){
 			return +1;
 		}
-		if(this.getValue()-coin.getValue()==0){
-			return 0;
-		}
 		return 0;
 	}
 	
