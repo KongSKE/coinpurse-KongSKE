@@ -85,10 +85,7 @@ public class Purse {
 	 */
 	public boolean insert(Coin coin) {
 		// if the purse is already full then can't insert anything.
-		if (coin.getValue() <= 0) {
-			return false;
-		}
-		if (!this.isFull()) {
+		if (!isFull() && coin.getValue() > 0) {
 			money.add(coin);
 			return true;
 		}
@@ -121,10 +118,12 @@ public class Purse {
 		// This code assumes you decrease amount each time you remove a coin.
 		// Your code might use some other variable for the remaining amount to
 		// withdraw.
+		java.util.Collections.sort(money);
 		java.util.Collections.reverse(money);
 		if (amount < 0) {
 			return null;
 		}
+		
 		List<Coin> templist = new ArrayList<Coin>();
 		System.out.println(money);
 		for (Coin coin : money) {
@@ -133,7 +132,6 @@ public class Purse {
 				amount -= coin.getValue();
 			}
 		}
-		java.util.Collections.reverse(templist);
 		for (Coin coin : templist) {
 			if (money.contains(coin)) {
 				money.remove(coin);
