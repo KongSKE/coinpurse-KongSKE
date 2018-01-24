@@ -125,7 +125,6 @@ public class Purse {
 		}
 		
 		List<Coin> templist = new ArrayList<Coin>();
-		System.out.println(money);
 		for (Coin coin : money) {
 			if (amount >= coin.getValue()) {
 				templist.add(coin);
@@ -142,7 +141,6 @@ public class Purse {
 		}
 		Coin[] array = new Coin[templist.size()];
 		templist.toArray(array);
-		System.out.println(templist);
 		return array;
 
 		// Success.
