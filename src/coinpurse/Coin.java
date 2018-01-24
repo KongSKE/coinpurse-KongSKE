@@ -30,7 +30,7 @@ public class Coin implements Comparable<Coin>{
 	 * get a currency
 	 * @return currency
 	 */
-	public String getCurrenccy() {
+	public String getCurrency() {
 		return currency;
 	}
 	
@@ -46,7 +46,7 @@ public class Coin implements Comparable<Coin>{
 			return false;
 		}
 		Coin other = (Coin) obj;
-		if(this.getCurrenccy().equalsIgnoreCase(other.getCurrenccy()) && this.getValue() == other.getValue()){
+		if(this.getCurrency().equalsIgnoreCase(other.getCurrency()) && this.getValue() == other.getValue()){
 			return true;
 		}
 		return false;
