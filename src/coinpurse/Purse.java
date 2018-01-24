@@ -72,9 +72,7 @@ public class Purse {
 	 * @return true if purse is full.
 	 */
 	public boolean isFull() {
-		if (this.count() == this.getCapacity()) {
-			return true;
-		}
+		if (this.count() == this.getCapacity()) return true;
 		return false;
 	}
 
@@ -93,7 +91,6 @@ public class Purse {
 		}
 		if (!this.isFull()) {
 			money.add(coin);
-			java.util.Collections.reverse(money);
 			return true;
 		}
 		return false;
@@ -125,6 +122,7 @@ public class Purse {
 		// This code assumes you decrease amount each time you remove a coin.
 		// Your code might use some other variable for the remaining amount to
 		// withdraw.
+		java.util.Collections.reverse(money);
 		if (amount < 0) {
 			return null;
 		}
