@@ -128,13 +128,12 @@ public class Purse {
 		if (amount < 0) {
 			return null;
 		}
-		double withdraw = amount;
 		List<Coin> templist = new ArrayList<Coin>();
 		System.out.println(money);
 		for (Coin coin : money) {
-			if (withdraw >= coin.getValue()) {
+			if (amount >= coin.getValue()) {
 				templist.add(coin);
-				withdraw -= coin.getValue();
+				amount -= coin.getValue();
 			}
 		}
 		java.util.Collections.reverse(templist);

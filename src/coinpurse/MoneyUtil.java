@@ -31,6 +31,13 @@ public class MoneyUtil {
 	 */
 	public static void sortCoins(List<Coin> coins) {
 		Collections.sort(coins);
+	}
+	
+	/**
+	 * Print coins
+	 * @param coins
+	 */
+	public static void printCoins(List<Coin> coins){
 		System.out.println(coins);
 	}
 	
@@ -46,6 +53,7 @@ public class MoneyUtil {
 		coins.add(new Coin(1.0, "Baht"));
 		System.out.println(coins);
 		sortCoins(coins);
+		printCoins(coins);
 	}
 	
 }
