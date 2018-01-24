@@ -3,7 +3,6 @@ package coinpurse;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.org.apache.xpath.internal.axes.ReverseAxesWalker;
 
 // You will use Collections.sort() to sort the coins
 
