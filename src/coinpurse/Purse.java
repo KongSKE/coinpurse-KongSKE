@@ -135,7 +135,6 @@ public class Purse {
 				if (withdraw >= coin.getValue()) {
 					templist.add(coin);
 					withdraw -= coin.getValue();
-//					System.out.println(withdraw);
 				}
 			}
 			if (withdraw == 0) {
