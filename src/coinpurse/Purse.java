@@ -124,18 +124,27 @@ public class Purse {
 			return null;
 		}
 		
+		if (this.getBalance() < amount) {
+			return null;
+		}
+		
+		double withdraw = amount;
 		List<Coin> templist = new ArrayList<Coin>();
-		for (Coin coin : money) {
-			if (amount >= coin.getValue()) {
-				templist.add(coin);
-				amount -= coin.getValue();
+		if(amount != 0){
+			for (Coin coin : money) {
+				if (withdraw >= coin.getValue()) {
+					templist.add(coin);
+					withdraw -= coin.getValue();
+				}
+			}
+			for (Coin coin : templist) {
+				if (money.contains(coin)) {
+					money.remove(coin);
+				}
+				
 			}
 		}
-		for (Coin coin : templist) {
-			if (money.contains(coin)) {
-				money.remove(coin);
-			}
-		}
+		
 		if (templist.isEmpty()) {
 			return null;
 		}
