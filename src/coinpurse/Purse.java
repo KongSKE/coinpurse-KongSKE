@@ -3,7 +3,6 @@ package coinpurse;
 import java.util.ArrayList;
 import java.util.List;
 
-
 // You will use Collections.sort() to sort the coins
 
 /**
@@ -71,7 +70,8 @@ public class Purse {
 	 * @return true if purse is full.
 	 */
 	public boolean isFull() {
-		if (this.count() == this.getCapacity()) return true;
+		if (this.count() == this.getCapacity())
+			return true;
 		return false;
 	}
 
@@ -123,34 +123,39 @@ public class Purse {
 		if (amount < 0) {
 			return null;
 		}
-		
+
 		if (this.getBalance() < amount) {
 			return null;
 		}
-		
+
 		double withdraw = amount;
 		List<Coin> templist = new ArrayList<Coin>();
-		if(amount != 0){
+		if (amount != 0) {
 			for (Coin coin : money) {
 				if (withdraw >= coin.getValue()) {
 					templist.add(coin);
 					withdraw -= coin.getValue();
+//					System.out.println(withdraw);
 				}
 			}
-			for (Coin coin : templist) {
-				if (money.contains(coin)) {
-					money.remove(coin);
+			if (withdraw == 0) {
+				for (Coin coin : templist) {
+					if (money.contains(coin)) {
+						money.remove(coin);
+					}
 				}
-				
+				Coin[] array = new Coin[templist.size()];
+				templist.toArray(array);
+				return array;
 			}
+
 		}
-		
+
 		if (templist.isEmpty()) {
 			return null;
 		}
-		Coin[] array = new Coin[templist.size()];
-		templist.toArray(array);
-		return array;
+		
+		return null;
 
 		// Success.
 		// Remove the coins you want to withdraw from purse,
@@ -162,6 +167,7 @@ public class Purse {
 	/**
 	 * toString returns a string description of the purse contents. It can
 	 * return whatever is a useful description.
+	 * 
 	 * @return description of the purse contents.
 	 */
 	public String toString() {

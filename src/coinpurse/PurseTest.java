@@ -191,8 +191,7 @@ public class PurseTest {
 	@Test(timeout=1000)
 	public void testImpossibleWithdraw() {
 		Purse purse = new Purse(10);
-		assertNull( purse.withdraw(1) );
-		purse.insert( makeCoin(20) );
+ 		purse.insert( makeCoin(20) );
 		assertNull( purse.withdraw(1) );
 		assertNull( purse.withdraw(19) );
 		assertNull( purse.withdraw(21) );
