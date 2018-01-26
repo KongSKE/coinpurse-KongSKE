@@ -70,9 +70,7 @@ public class Purse {
 	 * @return true if purse is full.
 	 */
 	public boolean isFull() {
-		if (this.count() == this.getCapacity())
-			return true;
-		return false;
+		return this.count() == this.getCapacity();
 	}
 
 	/**
@@ -128,16 +126,15 @@ public class Purse {
 			return null;
 		}
 
-		double withdraw = amount;
 		List<Coin> templist = new ArrayList<Coin>();
 		if (amount != 0) {
 			for (Coin coin : money) {
-				if (withdraw >= coin.getValue()) {
+				if (amount >= coin.getValue()) {
 					templist.add(coin);
-					withdraw -= coin.getValue();
+					amount -= coin.getValue();
 				}
 			}
-			if (withdraw == 0) {
+			if (amount == 0) {
 				for (Coin coin : templist) {
 					if (money.contains(coin)) {
 						money.remove(coin);
