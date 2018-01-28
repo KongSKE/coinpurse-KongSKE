@@ -15,14 +15,14 @@ public class MoneyUtil {
 	 * @param currency
 	 * @return List of Coins that contains only the coins form coins(the parameter) that have same currency as the currency parameter.
 	 */
-	public static List<Coin> filterByCurrency(List<Coin> coins, String currency) {
-		List<Coin> c = new ArrayList<Coin>();
-		for (Coin coin : coins) {
+	public static List<Valuable> filterByCurrency(List<Valuable> money, String currency) {
+		List<Valuable> v = new ArrayList<Valuable>();
+		for (Valuable coin : money) {
 			if(coin.getCurrency().equals(currency)) {
-				c.add(coin);
+				v.add(coin);
 			}
 		}
-		return c;
+		return v;
 	}
 	
 	/**

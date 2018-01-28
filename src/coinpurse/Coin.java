@@ -4,7 +4,7 @@ package coinpurse;
  * @author Varit Assavavisidchai
  *
  */
-public class Coin implements Comparable<Coin>{
+public class Coin implements Comparable<Coin> , Valuable{
 	double value = 0;
 	String currency = "";
 	
