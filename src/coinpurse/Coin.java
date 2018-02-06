@@ -9,6 +9,7 @@ public class Coin implements Comparable<Coin> , Valuable{
 	String currency = "";
 	
 	/**
+	 * Create a coin with value and currency
 	 * 
 	 * @param value
 	 * @param currency
@@ -35,6 +36,8 @@ public class Coin implements Comparable<Coin> , Valuable{
 	}
 	
 	/**
+	 * Check the coin that are equal or not
+	 * 
 	 * @param type of that object
 	 * @return true when they have same currency.
 	 */
@@ -55,6 +58,8 @@ public class Coin implements Comparable<Coin> , Valuable{
 	@Override
 	/**
 	 * Compare between 2 coin. If < return -1, > return 1, Equally return 0. 
+	 * 
+	 * @param type of coin
 	 * @return result of comparison
 	 */
 	public int compareTo(Coin coin) {
@@ -68,7 +73,9 @@ public class Coin implements Comparable<Coin> , Valuable{
 	}
 	
 	/**
-	 * @return Describtion about amount of Coin. 
+	 * Description about amount of coin
+	 * 
+	 * @return Description about amount of Coin. 
 	 */
 	public String toString() {
 		return value+" "+currency;

@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class MoneyUtil {
 	/**
+	 * Create List of money in the same currency
 	 * 
 	 * @param coins
 	 * @param currency
@@ -55,5 +56,4 @@ public class MoneyUtil {
 		sortCoins(coins);
 		printCoins(coins);
 	}
-	
 }

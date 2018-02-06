@@ -7,6 +7,7 @@ import java.util.Comparator;
  *
  */
 public class ValueComparator implements Comparator<Valuable> {
+	
 	/**
 	 * Compare two objects that implement Valuable.
 	 * First compare them by currency, so that "Baht" < "Dollar".
@@ -21,13 +22,8 @@ public class ValueComparator implements Comparator<Valuable> {
 			if(a.getValue() - b.getValue() < 0) {
 				return -1;
 			}
+			return 0;
 		}
-		if(a.getCurrency().equals("Baht") && b.getCurrency().equals("Dollar")) {
-			return -1;
-		}
-		if(a.getCurrency().equals("Dollar") && b.getCurrency().equals("Baht")) {
-			return +1;
-		}
-		return 0;
+		return a.getCurrency().compareToIgnoreCase(b.getCurrency());
 	}
 }

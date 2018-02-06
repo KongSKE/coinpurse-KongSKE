@@ -7,12 +7,13 @@ package coinpurse;
  *
  */
 public class BankNote implements Valuable{
-	private static long nextSerialNumber = 1000000;
+	private static long nextSerialNumber = 1_000_000;
 	private String currency = "";
-	private long serialNumber = 1000000;
-	private Double value = 0.0; 
+	private long serialNumber = 1_000_000;
+	private double value = 0.0; 
 	
 	/**
+	 * Create a bankNote with value and currency
 	 * 
 	 * @param value
 	 * @param currency
@@ -20,9 +21,11 @@ public class BankNote implements Valuable{
 	public BankNote(double value ,String currency) {
 		this.value = value;
 		this.currency = currency;
+		this.serialNumber = nextSerialNumber++;
 	}
 	
 	/**
+	 * Get a value of this BankNote.
 	 * 
 	 * @return the value of this BankNote.
 	 */
@@ -31,6 +34,7 @@ public class BankNote implements Valuable{
 	}
 	
 	/**
+	 * Get a currency of this BankNote
 	 * 
 	 * @return the currency
 	 */
@@ -39,6 +43,7 @@ public class BankNote implements Valuable{
 	}
 	
 	/**
+	 * Get a serialNumber of this BankNote
 	 * 
 	 * @return serial number
 	 */
@@ -47,8 +52,9 @@ public class BankNote implements Valuable{
 	}
 	
 	/**
+	 * Check this object that is equal or not
 	 * 
-	 * @return true if obj is a BankNote and has the same currency and value.
+	 * @return true if object is a BankNote and has the same currency and value.
 	 */
 	public boolean equals(Object obj) {
 		if(obj == null) {
@@ -65,6 +71,8 @@ public class BankNote implements Valuable{
 	}
 	
 	/**
+	 * Description of BankNote
+	 * 
 	 * @return Description of BankNote.
 	 */
 	public String toString() {
