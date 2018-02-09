@@ -10,7 +10,7 @@ import java.util.List;
  * A coin purse contains coins. You can insert coins, withdraw money, check the
  * balance, and check if the purse is full.
  * 
- * @author your name
+ * @author Varit Assavavisidchai
  */
 public class Purse {
 	/** Collection of objects in the purse. */
@@ -96,13 +96,14 @@ public class Purse {
 	 * Withdraw the requested amount of money. Return an array of Coins
 	 * withdrawn from purse, or return null if cannot withdraw the amount
 	 * requested.
+	 * Withdraw the amount, using only item that have the same currency as the parameter.
 	 * 
 	 * @param amount
 	 *            is the amount to withdraw
 	 * @return array of Coin objects for money withdrawn, or null if cannot
 	 *         withdraw requested amount.
 	 */
-	public Valuable[] withdraw(double amount) {
+	public Valuable[] withdraw(Valuable amount) {
 		/*
 		 * See lab sheet for outline of a solution, or devise your own solution.
 		 * The idea is to be greedy. Try to withdraw the largest coins possible.
@@ -118,42 +119,45 @@ public class Purse {
 		// This code assumes you decrease amount each time you remove a coin.
 		// Your code might use some other variable for the remaining amount to
 		// withdraw.
-		
+
 		java.util.Collections.sort(money, comp);
 		java.util.Collections.reverse(money);
-		if (amount < 0) {
+		if (amount.getValue() < 0) {
 			return null;
 		}
 
-		if (this.getBalance() < amount) {
+		if (this.getBalance() < amount.getValue()) {
 			return null;
 		}
 
+		double pay = amount.getValue();
 		List<Valuable> templist = new ArrayList<Valuable>();
-		if (amount != 0) {
-			for (Valuable v : money) {
-				if (amount >= v.getValue()) {
-					templist.add(v);
-					amount -= v.getValue();
-				}
-			}
-			if (amount == 0) {
-				for (Valuable v : templist) {
-					if (money.contains(v)) {
-						money.remove(v);
+		if (amount.getCurrency().equalsIgnoreCase("Baht")) {
+			if (amount.getValue() != 0) {
+				for (Valuable v : money) {
+					if (pay >= v.getValue()) {
+						templist.add(v);
+						pay -= v.getValue();
 					}
 				}
-				Valuable[] array = new Valuable[templist.size()];
-				templist.toArray(array);
-				return array;
-			}
+				if (pay == 0) {
+					for (Valuable v : templist) {
+						if (money.contains(v)) {
+							money.remove(v);
+						}
+					}
+					Valuable[] array = new Valuable[templist.size()];
+					templist.toArray(array);
+					return array;
+				}
 
+			}
 		}
 
 		if (templist.isEmpty()) {
 			return null;
 		}
-		
+
 		return null;
 
 		// Success.
@@ -161,6 +165,17 @@ public class Purse {
 		// and return them as an array.
 		// Use list.toArray( array[] ) to copy a list into an array.
 		// toArray returns a reference to the array itself.
+	}
+
+	/**
+	 * Withdraw amount using the default currency.
+	 * 
+	 * @param amount
+	 * @return withdraw amount using the default currency, which is "Bath".
+	 */
+	public Valuable[] withdraw(double amount) {
+		Money money = new Money(amount, "Baht");
+		return withdraw(money);
 	}
 
 	/**
