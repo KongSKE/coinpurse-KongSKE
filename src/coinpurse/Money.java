@@ -49,7 +49,7 @@ public class Money implements Valuable{
 		if(obj.getClass() != this.getClass()){
 			return false;
 		}
-		Valuable other = (Valuable) obj;
+		Money other = (Money) obj;
 		if(this.getCurrency().equalsIgnoreCase(other.getCurrency()) && this.getValue() == other.getValue()){
 			return true;
 		}
