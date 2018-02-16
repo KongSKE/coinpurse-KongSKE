@@ -95,8 +95,8 @@ public class Purse {
 	/**
 	 * Withdraw the requested amount of money. Return an array of Coins
 	 * withdrawn from purse, or return null if cannot withdraw the amount
-	 * requested.
-	 * Withdraw the amount, using only item that have the same currency as the parameter.
+	 * requested. Withdraw the amount, using only item that have the same
+	 * currency as the parameter.
 	 * 
 	 * @param amount
 	 *            is the amount to withdraw
@@ -132,32 +132,24 @@ public class Purse {
 
 		double pay = amount.getValue();
 		List<Valuable> templist = new ArrayList<Valuable>();
-		if (amount.getCurrency().equalsIgnoreCase("Baht")) {
-			if (amount.getValue() != 0) {
-				for (Valuable v : money) {
-					if (pay >= v.getValue()) {
-						templist.add(v);
-						pay -= v.getValue();
+		if (amount.getValue() != 0) {
+			for (Valuable v : money) {
+				if (pay >= v.getValue() && v.getCurrency().equalsIgnoreCase(amount.getCurrency())) {
+					templist.add(v);
+					pay -= v.getValue();
+				}
+			}
+			if (pay == 0) {
+				for (Valuable v : templist) {
+					if (money.contains(v)) {
+						money.remove(v);
 					}
 				}
-				if (pay == 0) {
-					for (Valuable v : templist) {
-						if (money.contains(v)) {
-							money.remove(v);
-						}
-					}
-					Valuable[] array = new Valuable[templist.size()];
-					templist.toArray(array);
-					return array;
-				}
-
+				Valuable[] array = new Valuable[templist.size()];
+				templist.toArray(array);
+				return array;
 			}
 		}
-
-		if (templist.isEmpty()) {
-			return null;
-		}
-
 		return null;
 
 		// Success.
