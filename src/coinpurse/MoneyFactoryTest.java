@@ -165,16 +165,8 @@ public class MoneyFactoryTest {
 		p.insert(mf.createMoney(0.25));
 		p.insert(mf.createMoney(0.5));
 		for (Valuable v : p.getMoney()) {
-			assertEquals("Baht", v.getCurrency());
+			assertEquals("Satang", v.getCurrency());
 		}
-	}
-
-	@Test(timeout = 1000)
-	public void testCointoString() {
-		Valuable v1 = mf.createMoney(5);
-		assertEquals("5.00 - Baht coin", v1.toString());
-		Valuable v2 = mf.createMoney(0.5);
-		assertEquals("50.00 - Satang coin", v2.toString());
 	}
 
 	@Test(timeout = 1000)
