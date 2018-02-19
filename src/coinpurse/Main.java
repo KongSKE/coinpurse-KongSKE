@@ -17,6 +17,7 @@ public class Main {
     	MoneyFactory factory = null;
     	try {
     	 factory = (MoneyFactory)Class.forName(factoryclass).newInstance();
+    	 MoneyFactory.setFactory(factory);
     	}
     	catch (ClassCastException cce) {
     	 //the object could not be cast to type MoneyFactory

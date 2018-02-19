@@ -1,7 +1,7 @@
 package coinpurse;
 
 /**
- * This class is create each country money.
+ * This class is create each country
  * @author Varit Assavavisidchai
  *
  */
