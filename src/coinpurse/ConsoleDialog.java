@@ -82,17 +82,17 @@ public class ConsoleDialog {
         Scanner scanline = new Scanner(inline);
         while( scanline.hasNextDouble() ) {
             double value = scanline.nextDouble();
-            if (value >= 20) {
-            	BankNote note = new BankNote(value, CURRENCY);
-            	System.out.printf("Deposit %s... ", note.toString() );
-            	boolean ok = purse.insert(note);
-            	System.out.println((ok? "ok" : "FAILED"));
-            } else {
-                Valuable coin = makeMoney(value);
-                System.out.printf("Deposit %s... ", coin.toString() );
-                boolean ok = purse.insert(coin);
-                System.out.println( (ok? "ok" : "FAILED") );
+            MoneyFactory mf = MoneyFactory.getInstance();
+            Valuable v;
+            try {
+            	v = mf.createMoney(value);
+            } catch (IllegalArgumentException ex) {
+            	System.out.println("Sorry, "+ value +" is not a valid amount.");
+            	 continue; // if inside a loop then go back to top
             }
+            System.out.printf("Deposit %s... ", v.toString());
+			boolean ok = purse.insert(v);
+			System.out.println((ok ? "ok" : "FAILED"));
         }
         if ( scanline.hasNext() )
             System.out.println("Invalid input: "+scanline.next() );
@@ -130,12 +130,11 @@ public class ConsoleDialog {
         scanline.close();
     }
     
-    /** Make a Coin (or BankNote or whatever) using requested value. */
-    private Valuable makeMoney(double value) {
-    	if (value >= 20) {
-    		return new BankNote(value, CURRENCY);
-    	}
-    	return new Coin(value, CURRENCY);
-    }
-
+//    /** Make a Coin (or BankNote or whatever) using requested value. */
+//    private Valuable makeMoney(double value) {
+//    	if (value >= 20) {
+//    		return new BankNote(value, CURRENCY);
+//    	}
+//    	return new Coin(value, CURRENCY);
+//    }
 }

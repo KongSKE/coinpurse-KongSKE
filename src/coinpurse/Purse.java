@@ -169,6 +169,10 @@ public class Purse {
 		Money money = new Money(amount, "Baht");
 		return withdraw(money);
 	}
+	
+	public List<Valuable> getMoney() {
+		return money;
+	}
 
 	/**
 	 * toString returns a string description of the purse contents. It can

@@ -18,6 +18,18 @@ public class BankNote extends Money {
 	public BankNote(double value ,String currency) {
 		super(value, currency);
 		this.serialNumber = nextSerialNumber++;
+		
+	}
+	
+	/**
+	 * 
+	 * @param value
+	 * @param currency
+	 * @param serialNumber
+	 */
+	public BankNote (double value, String currency, long serialNumber) {
+		super(value, currency);
+		this.serialNumber = serialNumber;
 	}
 	
 	/**
