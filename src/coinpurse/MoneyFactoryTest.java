@@ -165,7 +165,7 @@ public class MoneyFactoryTest {
 		p.insert(mf.createMoney(0.25));
 		p.insert(mf.createMoney(0.5));
 		for (Valuable v : p.getMoney()) {
-			assertEquals("Satang", v.getCurrency());
+			assertEquals("Baht", v.getCurrency());
 		}
 	}
 
@@ -176,12 +176,23 @@ public class MoneyFactoryTest {
 		Valuable v3 = mf.createMoney(50);
 		Valuable v4 = mf.createMoney(50);
 		Valuable v5 = mf.createMoney(50);
-		
+
 		assertNotEquals(v1.toString(), v2.toString());
 		assertNotEquals(v2.toString(), v3.toString());
 		assertNotEquals(v3.toString(), v4.toString());
 		assertNotEquals(v4.toString(), v5.toString());
 		assertNotEquals(v5.toString(), v1.toString());
+
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testError() {
+		Valuable v1 = mf.createMoney("ten");
+		Valuable v2 = mf.createMoney(7);
+		Valuable v3 = mf.createMoney(30);
+		Valuable v4 = mf.createMoney(20);
+		Valuable v5 = mf.createMoney(1);
+
 
 	}
 
@@ -201,5 +212,5 @@ public class MoneyFactoryTest {
 				sum += c.getValue();
 		return sum;
 	}
-	
+
 }
