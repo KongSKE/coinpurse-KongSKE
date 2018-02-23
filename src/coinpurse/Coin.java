@@ -5,6 +5,9 @@ package coinpurse;
  *
  */
 public class Coin extends Money {
+	
+	private String output;
+	
 	/**
 	 * Create a coin with value and currency
 	 * 
@@ -13,6 +16,12 @@ public class Coin extends Money {
 	 */
 	public Coin(double value, String currency) {
 		super(value,currency);
+		this.output = currency;
+	}
+	
+	public Coin(double value, String currency, String output) {
+		super(value, currency);
+		this.output = output;
 	}
 	
 	/**
@@ -21,6 +30,9 @@ public class Coin extends Money {
 	 * @return Description about amount of Coin. 
 	 */
 	public String toString() {
+		if(!currency.equalsIgnoreCase(output)) {
+			return super.getClass()+" "+output;
+		}
 		return super.getValue()+" "+super.getCurrency();
 	}
 }
