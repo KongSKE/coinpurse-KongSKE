@@ -22,6 +22,6 @@ public class MalayMoneyFactory extends MoneyFactory {
 		if (value == 1 || value == 2 || value == 5 || value == 10 || value == 20 || value == 50 || value == 100) {
 			return v = new BankNote(value, ringgit);
 		}
-		throw new IllegalArgumentException();
+		throw new IllegalArgumentException("Sorry, there are not type of this money.");
 	}
 }

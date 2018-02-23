@@ -28,6 +28,6 @@ public class ThaiMoneyFactory extends MoneyFactory {
 		if (value == 20 || value == 50 || value == 100 || value == 500 || value == 1000) {
 			return v = new BankNote(value, baht);
 		}
-		throw new IllegalArgumentException();
+		throw new IllegalArgumentException("Sorry, there are not type of this money.");
 	}
 }
