@@ -20,7 +20,7 @@ public class ThaiMoneyFactory extends MoneyFactory {
 		String satang = "Satang";
 		Valuable v;
 		if (value == 0.25 || value == 0.5) {
-			return v = new Coin(value, satang);
+			return v = new Coin(value, baht);
 		}
 		if (value == 1 || value == 2 || value == 5 || value == 10) {
 			return v = new Coin(value, baht);
