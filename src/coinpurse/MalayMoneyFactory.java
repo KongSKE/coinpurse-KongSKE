@@ -20,7 +20,7 @@ public class MalayMoneyFactory extends MoneyFactory {
 			return v = new Coin(value, ringgit);
 		}
 		if (value == 1 || value == 2 || value == 5 || value == 10 || value == 20 || value == 50 || value == 100) {
-			return v = new BankNote(value, ringgit);
+			return v = new BankNote(value, ringgit, serialNumber++);
 		}
 		throw new IllegalArgumentException("Sorry, there are not type of this money.");
 	}

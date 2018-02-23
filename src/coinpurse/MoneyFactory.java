@@ -8,8 +8,7 @@ package coinpurse;
 public abstract class MoneyFactory {
 
 	private static MoneyFactory factory = null;
-	private long serialNumber = 1_000_000;
-	private long next = serialNumber++;
+	protected long serialNumber = 1_000_000;
 
 	/**
 	 * Constructor

@@ -1,5 +1,7 @@
 package coinpurse;
 
+import sun.security.x509.SerialNumber;
+
 /**
  * Creat thai money
  * 
@@ -26,7 +28,7 @@ public class ThaiMoneyFactory extends MoneyFactory {
 			return v = new Coin(value, baht);
 		}
 		if (value == 20 || value == 50 || value == 100 || value == 500 || value == 1000) {
-			return v = new BankNote(value, baht);
+			return v = new BankNote(value, baht, serialNumber++);
 		}
 		throw new IllegalArgumentException("Sorry, there are not type of this money.");
 	}
