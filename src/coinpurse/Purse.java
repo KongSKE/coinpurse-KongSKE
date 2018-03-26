@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import com.sun.xml.internal.bind.v2.TODO;
+
+import coinpurse.strategy.GreedyWithdraw;
+import coinpurse.strategy.WithdrawStrategy;
+
 // You will use Collections.sort() to sort the coins
 
 /**
@@ -15,8 +20,8 @@ import java.util.List;
 public class Purse {
 	/** Collection of objects in the purse. */
 	List<Valuable> money = new ArrayList<Valuable>();
-	Comparator<Valuable> comp = new ValueComparator();
-
+	// Initialize WithdrawStrategy
+	private WithdrawStrategy strategy;
 	/**
 	 * Capacity is maximum number of items the purse can hold. Capacity is set
 	 * when the purse is created and cannot be changed.
@@ -31,6 +36,7 @@ public class Purse {
 	 */
 	public Purse(int capacity) {
 		this.capacity = capacity;
+		this.strategy = new GreedyWithdraw();
 	}
 
 	/**
@@ -120,35 +126,21 @@ public class Purse {
 		// Your code might use some other variable for the remaining amount to
 		// withdraw.
 
-		java.util.Collections.sort(money, comp);
-		java.util.Collections.reverse(money);
-		if (amount.getValue() < 0) {
+		if (amount.getValue() == 0) {
 			return null;
 		}
 
 		if (this.getBalance() < amount.getValue()) {
 			return null;
 		}
-
-		double pay = amount.getValue();
-		List<Valuable> templist = new ArrayList<Valuable>();
-		if (amount.getValue() != 0) {
-			for (Valuable v : money) {
-				if (pay >= v.getValue() && v.getCurrency().equalsIgnoreCase(amount.getCurrency())) {
-					templist.add(v);
-					pay -= v.getValue();
-				}
+		List<Valuable> result = strategy.withdraw(amount, money);
+		Valuable[] array = new Valuable[result.size()];
+		if (result != null) {
+			for (Valuable v : result) {
+				money.remove(v);
 			}
-			if (pay == 0) {
-				for (Valuable v : templist) {
-					if (money.contains(v)) {
-						money.remove(v);
-					}
-				}
-				Valuable[] array = new Valuable[templist.size()];
-				templist.toArray(array);
-				return array;
-			}
+			result.toArray(array);
+			return array;
 		}
 		return null;
 
@@ -169,9 +161,16 @@ public class Purse {
 		Money money = new Money(amount, "Baht");
 		return withdraw(money);
 	}
-	
+
 	public List<Valuable> getMoney() {
 		return money;
+	}
+
+	/**
+	 * 
+	 */
+	public void setWithdrawStrategy(WithdrawStrategy strategy) {
+		this.strategy = strategy;
 	}
 
 	/**

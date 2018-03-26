@@ -1,9 +1,7 @@
 package coinpurse;
 
-import sun.security.x509.SerialNumber;
-
 /**
- * Creat thai money
+ * Create thai money
  * 
  * @author Varit Assavavisidchai
  *

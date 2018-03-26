@@ -15,13 +15,13 @@ import org.junit.Test;
  * tell the IDE to add it to your project as a "Library". To run these tests,
  * right click on this file (in Project panel) and choose Run As -> JUnit test
  * 
- * @author Resident Evil
+ * @author Varit Assavavisidchai
  * @version 2018.01.19
  */
 public class PurseTest {
 	/** tolerance for comparing two double values */
 	private static final double TOL = 1.0E-6;
-	private static final String CURRENCY = "BTC";
+	private static final String CURRENCY = "Baht";
 
 	/**
 	 * Sets up the test fixture. Called before every test method.
